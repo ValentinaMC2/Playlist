@@ -1,0 +1,79 @@
+﻿<!-- Index.cshtml para Users -->
+@model IEnumerable<Playlist.Web.DTOs.UserDTO>
+
+@{
+    ViewData["Title"] = "Lista de Usuarios";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<a class="btn btn-primary" asp-action="Create">Nuevo Usuario</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Edad</th>
+            <th>País</th>
+            <th>Correo Electrónico</th>
+            <th>Fecha de registro</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Name</td>
+                <td>@user.Age</td>
+                <td>@user.Country</td>
+                <td>@user.Email</td>
+                <td>@user.RegistrationDate.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a class="btn btn-info" asp-action="Edit" asp-route-id="@user.Id">Editar</a>
+                    <form asp-action="Delete" method="post" class="d-inline" onsubmit="return confirm('¿Estás seguro de eliminar este usuario?')">
+                        <input type="hidden" name="id" value="@user.Id" />
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+
+    <script>
+
+        $(document).ready(function () {
+            $('.btnDelete').click(function (event) {
+
+                event.preventDefault();
+
+                Swal.fire({
+                    title: "¿Desea eliminar el usuario?",
+                    text: "No podrá revertirlo",
+                    icon: "question",
+                    showCancelButton: true,
+
+                }).then((result) => {
+
+                    if (result.isConfirmed) {
+
+                        const form = $(this).closest('form');
+
+                        form.submit();
+                    }
+
+                });
+
+            });
+
+        });
+
+
+    </script>
+
+}
