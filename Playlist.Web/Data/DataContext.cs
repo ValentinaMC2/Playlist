@@ -15,15 +15,13 @@ namespace Playlist.Web.Data
 
         public DbSet<Song> Songs { get; set; }
 
-        public DbSet<UserSong> UserSongs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Primary key configuration for the UserSong entity.
-            modelBuilder.Entity<UserSong>()
-                .HasKey(us => new { us.UserId, us.SongId });
+
         }
 
     }
 
 }
+
