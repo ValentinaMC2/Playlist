@@ -12,7 +12,7 @@ using Playlist.Web.Data;
 namespace Playlist.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240409051542_InitialSchema")]
+    [Migration("20240409201831_InitialSchema")]
     partial class InitialSchema
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,7 +48,12 @@ namespace Playlist.Web.Migrations
                         .HasMaxLength(70)
                         .HasColumnType("nvarchar(70)");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Songs");
                 });
@@ -92,36 +97,13 @@ namespace Playlist.Web.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Playlist.Web.Data.Entities.UserSong", b =>
+            modelBuilder.Entity("Playlist.Web.Data.Entities.Song", b =>
                 {
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SongId")
-                        .HasColumnType("int");
-
-                    b.HasKey("UserId", "SongId");
-
-                    b.HasIndex("SongId");
-
-                    b.ToTable("UserSongs");
-                });
-
-            modelBuilder.Entity("Playlist.Web.Data.Entities.UserSong", b =>
-                {
-                    b.HasOne("Playlist.Web.Data.Entities.Song", "Song")
-                        .WithMany()
-                        .HasForeignKey("SongId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Playlist.Web.Data.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Song");
 
                     b.Navigation("User");
                 });
