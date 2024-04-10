@@ -1,0 +1,38 @@
+﻿@model Playlist.Web.DTOs.SongDTO
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Nueva Canción</h1>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label class="form-label">Título</label>
+        <input type="text" class="form-control" asp-for="Title" placeholder="Título">
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Género</label>
+        <input type="text" class="form-control" asp-for="Genre" placeholder="Género">
+        <span asp-validation-for="Genre" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Duración (segundos)</label>
+        <input type="number" class="form-control" asp-for="DurationInSeconds" placeholder="Duración">
+        <span asp-validation-for="DurationInSeconds" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Año de lanzamiento</label>
+        <input type="number" class="form-control" asp-for="ReleaseYear" placeholder="Año de lanzamiento">
+        <span asp-validation-for="ReleaseYear" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">ID Usuario</label>
+        <input type="number" class="form-control" asp-for="UserId" placeholder="ID Usuario">
+        <span asp-validation-for="UserId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>

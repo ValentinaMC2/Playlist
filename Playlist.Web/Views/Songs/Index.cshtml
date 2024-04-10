@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Playlist.Web.Data.Entities.Song>
+
+@{
+    ViewData["Title"] = "Lista de Canciones";
+}
+
+<div class="container">
+    <h1 class="my-4">@ViewData["Title"]</h1>
+
+    <form asp-action="Create" method="get">
+        <button type="submit" class="btn btn-primary">Agregar Nueva Canción</button>
+    </form>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Género</th>
+                <th>Duración (seg)</th>
+                <th>Año de Lanzamiento</th>
+                <th>Artista</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var song in Model)
+            {
+                <tr>
+                    <td>@song.Title</td>
+                    <td>@song.Genre</td>
+                    <td>@song.DurationInSeconds</td>
+                    <td>@song.ReleaseYear</td>
+                    <td>@song.User.Name</td>
+                    <td>
+                        <form asp-action="Edit" method="get">
+                            <input type="hidden" name="id" value="@song.Id" />
+                            <button type="submit" class="btn btn-primary">Editar</button>
+                        </form>
+                        <form asp-action="Delete" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta canción?');">
+                            <input type="hidden" name="id" value="@song.Id" />
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+
+    <script>
+
+        $(document).ready(function () {
+            $('.btnDelete').click(function (event) {
+
+                event.preventDefault();
+
+                Swal.fire({
+                    title: "¿Desea eliminar la canción?",
+                    text: "No podrá revertirlo",
+                    icon: "question",
+                    showCancelButton: true,
+
+                }).then((result) => {
+
+                    if (result.isConfirmed) {
+
+                        const form = $(this).closest('form');
+
+                        form.submit();
+                    }
+
+                });
+
+            });
+
+        });
+
+
+    </script>
+
+}
