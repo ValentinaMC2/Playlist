@@ -1,8 +1,58 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Playlist</p>
+<div class="container-fluid bg-success text-light py-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 text-center">
+            <h1 class="display-4 mb-4">Bienvenido a tu Playlist</h1>
+            <p class="lead">¡Aquí puedes agregar, descargar, organizar tu música favorita y crear listas de reproducción increíbles!</p>
+            <a href="/Songs" class="btn btn-primary btn-lg"><i class="fas fa-music"></i> Explora las canciones</a>
+        </div>
+    </div>
 </div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 text-center">
+            <p>¿Quieres subir tus propias canciones? ¡Regístrate como usuario ahora!</p>
+            <a href="/Users/Create" class="btn btn-success btn-lg"><i class="fas fa-user-plus"></i> Registrarse como Usuario</a>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="https://img.freepik.com/foto-gratis/fondo-musical-volumetrico-clave-sol-notas-generativas-ai_169016-29576.jpg?t=st=1712785481~exp=1712789081~hmac=ed6f14b349782210be821773048d449cd3a1acb67089240a331fb0364429734c&w=1380" alt="..." class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Descubre Nueva Música</h5>
+                    <p class="card-text">Explora una amplia variedad de canciones y artistas.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="https://img.freepik.com/vector-premium/icono-barra-reproduccion-musica-o-video-fondo-transparente-reproductor-audio-canciones-o-lista-reproduccion-podcasts_766283-150.jpg?w=1800" alt="..." class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Crea Listas de Reproducción</h5>
+                    <p class="card-text">Organiza tus canciones favoritas en listas de reproducción personalizadas.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="https://img.freepik.com/vector-gratis/conjunto-flechas-descarga_78370-2378.jpg?t=st=1712786129~exp=1712789729~hmac=05a10ea13cf89d28bff256c5096c36bc06390c84a23ac5c5b903cbb98fc7920d&w=826" alt="..." class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">Descargar Canciones</h5>
+                    <p class="card-text">Explora nuestra selección de música y descarga tus favoritas.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="/Songs" class="btn btn-success"><i class="fas fa-download"></i> Descargar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
